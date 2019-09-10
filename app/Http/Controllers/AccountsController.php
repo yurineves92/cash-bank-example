@@ -58,6 +58,17 @@ class AccountsController extends Controller
     public function accomplish()
     {
         $params = Request::all();
+        $value = str_replace('.','',$params['value']);
+        $value = str_replace(',','.',$value);
+        $params['value'] = $value;
+        $account = Accounts::where('id','=',$params['account_id'])->first();
+        if($params['type_transaction'] == 1){
+            $account['balance'] += $params['value'];
+            $account->save();
+        } else {
+            $account['balance'] -= $params['value'];
+            $account->save();
+        }
         $account_historical = new AccountsHistorical($params);
         $account_historical->save();
     	Session::flash('alert-success', 'Movimentação realizado com sucesso!');

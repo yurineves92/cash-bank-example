@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label>Valor</label>
-                    <input type="number" class="form-control" name="value" placeholder="Digite o valor">
+                    <input type="text" class="form-control" name="value" placeholder="Digite o valor">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Salvar</button>
@@ -48,4 +48,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="/js/jquery.mask.js"></script>
+<script type="text/javascript" src="/js/money.js"></script>
 @endsection

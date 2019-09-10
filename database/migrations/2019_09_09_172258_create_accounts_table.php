@@ -19,7 +19,7 @@ class CreateAccountsTable extends Migration
             $table->string('agency',11);
             $table->string('account',11);
             $table->string('password',100);
-            $table->decimal('balance',10,4)->default(0);
+            $table->decimal('balance',10, 2)->default(0);
             $table->timestamps();
         });
     }

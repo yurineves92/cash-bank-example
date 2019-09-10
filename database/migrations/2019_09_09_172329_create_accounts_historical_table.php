@@ -16,7 +16,7 @@ class CreateAccountsHistoricalTable extends Migration
         Schema::create('accounts_historical', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type_transaction',10);
-            $table->decimal('value',10,4);
+            $table->decimal('value',10,2);
             $table->date('date_operation');
             $table->unsignedBigInteger('account_id')->unsigned()->nullable();  
             $table->timestamps();
