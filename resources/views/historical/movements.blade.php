@@ -13,6 +13,27 @@
     </div>
 <!--<br><br> -->
     <div>
+        <p>Filtros</p>
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Tipo de Transação: </label>
+                <select name="type_transaction" class="form-control" required>
+                    <option value="1">Depósito</option>
+                    <option value="2">Retirada</option>
+                </select>
+            </div>
+            <div class="form-group" style="padding-left:5px;">
+                <label>Data de Operação: </label>
+                <input type="date" class="form-control" name="date_operation">
+            </div>
+            <div class="form-group" style="padding-left:5px;">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+            </div>
+            <div class="d-flex flex-row-reverse" style="padding-left:5px;">
+                <button type="submit" class="btn btn-danger">PDF</button>
+            </div>
+        </div>
+        <br>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -25,10 +46,14 @@
             </thead>
             <tbody>
                 @foreach ($accounts_historical as $a)
-                <tr>
+                <tr class="{{$a->type_transaction == 1 ? 'alert alert-success' : 'alert alert-danger' }}">
                     <td>{{ $a->id}}</td>
                     <td>{{ $a->account->holder }}</td>
-                    <td>{{ $a->type_transaction }}</td>
+                    @if($a->type_transaction == 1)
+                    <td>Depósito</td>
+                    @else
+                    <td>Retirada</td>
+                    @endif
                     <td>{{ $a->value }}</td>
                     <td>{{ date('d/m/Y',strtotime($a->date_operation)) }}</td>
                 </tr>

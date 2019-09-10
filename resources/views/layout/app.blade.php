@@ -47,7 +47,6 @@
 
     <section>
         <div class="container" style="padding-top:50px;">
-            <?php date_default_timezone_set('America/Sao_Paulo'); ?>
             @yield('content')
         </div>
     </section>
