@@ -13,7 +13,6 @@
     </div>
 <!--<br><br> -->
     <div>
-        @include('historical.filter')
         <br>
         <table class="table table-bordered">
             <thead>
@@ -42,7 +41,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            {{ $accounts_historical->appends($query)->links() }}
+            {{ $accounts_historical->links() }}
         </div>
     </div>
 </div>

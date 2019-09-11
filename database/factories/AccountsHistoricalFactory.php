@@ -7,6 +7,7 @@ use App\Model\AccountsHistorical;
 use Faker\Generator as Faker;
 
 $factory->define(AccountsHistorical::class, function (Faker $faker) {
+    $count = 0;
     return [
         'type_transaction' => rand(1, 2),
         'value' => 100.00,
@@ -14,4 +15,6 @@ $factory->define(AccountsHistorical::class, function (Faker $faker) {
         'account_id' => 1,
 
     ];
+    $count++;
+    print_r($count);
 });
