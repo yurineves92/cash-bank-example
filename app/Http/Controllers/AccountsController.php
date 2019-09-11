@@ -77,8 +77,15 @@ class AccountsController extends Controller
 
     public function movements()
     {
-        $accounts_historical = AccountsHistorical::all();
-        return view('historical.movements')->with('accounts_historical',$accounts_historical);
+        $params = Request::all();
+        
+        if(empty($params)){
+            $accounts_historical = AccountsHistorical::paginate(10);
+            return view('historical.movements')->with('accounts_historical',$accounts_historical)->with('query',$params);
+        } else {
+            $accounts_historical = AccountsHistorical::where("date_operation",'=',$params['date_operation'])->where('type_transaction','=',$params['type_transaction'])->paginate(25);
+            return view('historical.movements')->with('accounts_historical',$accounts_historical)->with('query',$params);
+        }
     }
 
 }

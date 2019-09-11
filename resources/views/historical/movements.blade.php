@@ -13,26 +13,7 @@
     </div>
 <!--<br><br> -->
     <div>
-        <p>Filtros</p>
-        <div class="form-inline">
-            <div class="form-group">
-                <label>Tipo de Transação: </label>
-                <select name="type_transaction" class="form-control" required>
-                    <option value="1">Depósito</option>
-                    <option value="2">Retirada</option>
-                </select>
-            </div>
-            <div class="form-group" style="padding-left:5px;">
-                <label>Data de Operação: </label>
-                <input type="date" class="form-control" name="date_operation">
-            </div>
-            <div class="form-group" style="padding-left:5px;">
-                <button type="submit" class="btn btn-primary">Filtrar</button>
-            </div>
-            <div class="d-flex flex-row-reverse" style="padding-left:5px;">
-                <button type="submit" class="btn btn-danger">PDF</button>
-            </div>
-        </div>
+        @include('historical.filter')
         <br>
         <table class="table table-bordered">
             <thead>
@@ -60,6 +41,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="text-center">
+            {{ $accounts_historical->appends($query)->links() }}
+        </div>
     </div>
 </div>
 @endsection
