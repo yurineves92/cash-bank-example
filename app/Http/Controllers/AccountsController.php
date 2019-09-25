@@ -85,7 +85,7 @@ class AccountsController extends Controller
             if(!$date_operation){
                 $date_operation = date("Y-m-d");
             }
-            $accounts_historical = AccountsHistorical::where('type_transaction','=',$type_transaction)->where('date_operation','>=',$date_operation)->orderBy('id','DESC')->paginate(10);
+            $accounts_historical = AccountsHistorical::where('type_transaction',$type_transaction)->where('date_operation',$date_operation)->orderBy('id','DESC')->paginate(10);
         } else {
             $accounts_historical = AccountsHistorical::orderBy('id','DESC')->paginate(10);
         }
