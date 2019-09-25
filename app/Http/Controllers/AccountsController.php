@@ -82,11 +82,13 @@ class AccountsController extends Controller
         if($request && count($query) > 1){
             $type_transaction = Request::get('type_transaction');
             $date_operation = Request::get('date_operation');
-            $accounts_historical = AccountsHistorical::where('date_operation','=',$date_operation)->where('type_transaction','LIKE','%'.$type_transaction.'%')->orderBy('id','DESC')->paginate(2);
+            if(!$date_operation){
+                $date_operation = date("Y-m-d");
+            }
+            $accounts_historical = AccountsHistorical::where('type_transaction','=',$type_transaction)->where('date_operation','>=',$date_operation)->orderBy('id','DESC')->paginate(10);
         } else {
-            $accounts_historical = AccountsHistorical::orderBy('id','DESC')->paginate(2);
+            $accounts_historical = AccountsHistorical::orderBy('id','DESC')->paginate(10);
         }
         return view('historical.movements')->with('accounts_historical',$accounts_historical)->with('query',$query);
     }
-
 }

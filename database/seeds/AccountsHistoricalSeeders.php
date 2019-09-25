@@ -12,6 +12,6 @@ class AccountsHistoricalSeeders extends Seeder
      */
     public function run()
     {
-        factory(\App\Model\AccountsHistorical::class, 10000)->create();
+        factory(\App\Model\AccountsHistorical::class, 50000)->create();
     }
 }
