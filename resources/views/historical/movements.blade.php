@@ -11,8 +11,8 @@
             <li class="breadcrumb-item active">Histórico</li>
         </ol>
     </div>
-<!--<br><br> -->
     <div>
+        @include('historical.filter')
         <br>
         <table class="table table-bordered">
             <thead>
@@ -28,7 +28,7 @@
                 @foreach ($accounts_historical as $a)
                 <tr class="{{$a->type_transaction == 1 ? 'alert alert-success' : 'alert alert-danger' }}">
                     <td>{{ $a->id}}</td>
-                    <td>{{ $a->account->holder }}</td>
+                    <td>{{ $a->account_id }}</td>
                     @if($a->type_transaction == 1)
                     <td>Depósito</td>
                     @else
@@ -41,7 +41,7 @@
             </tbody>
         </table>
         <div class="text-center">
-            {{ $accounts_historical->links() }}
+            {{ $accounts_historical->appends($query)->links() }}
         </div>
     </div>
 </div>

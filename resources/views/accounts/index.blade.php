@@ -33,7 +33,7 @@
                     <th>Agência</th>
                     <th>Conta</th>
                     <th>Balanço</th>
-                    <th>Data de Atualização</th>
+                    <th>Última atualização</th>
                     <th>Ações</th>
                 </tr>
             </thead>

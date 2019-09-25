@@ -1,23 +1,36 @@
-<p>Filtros</p>
 {!!Form::open(array('url'=>'/accounts/movements','method'=>'GET','autocomplete'=>'off'))!!}
 <div class="form-inline">
     <div class="form-group">
         <label>Tipo de Transação: </label>
         <select name="type_transaction" class="form-control">
-            <option selected value>Selecione...</option>
+            <option value="">Selecione...</option>
+            @if(isset($query['type_transaction']))
+                @if($query['type_transaction'] == 1)
+                <option value="1" selected>Depósito</option>
+                <option value="2">Retirada</option>
+                @elseif ($query['type_transaction'] == 2)
+                <option value="1">Depósito</option>
+                <option value="2" selected>Retirada</option>
+                @endif
+            @else
             <option value="1">Depósito</option>
             <option value="2">Retirada</option>
+            @endif
         </select>
     </div>
-    <div class="form-group" style="padding-left:5px;">
+    <div class="form-group" style="padding-left:15px;">
         <label>Data de Operação: </label>
-        <input type="date" class="form-control" name="date_operation">
+        @if(isset($query['date_operation']))
+            <input type="date" class="form-control" name="date_operation" value="{{$query['date_operation']}}">
+        @else
+            <input type="date" class="form-control" name="date_operation">
+        @endif
     </div>
-    <div class="form-group" style="padding-left:5px;">
+    <div class="form-group" style="padding-left:15px;">
         <button type="submit" class="btn btn-primary">Filtrar</button>
     </div>
-    <div class="d-flex flex-row-reverse" style="padding-left:5px;">
-        <a href="/accounts/movements" class="btn btn-outline-success">Limpar</a>
+    <div class="d-flex flex-row-reverse" style="padding-left:15px;">
+        <a href="/accounts/movements" class="btn btn-outline-primary">Limpar</a>
     </div>
 </div>
 {!!Form::close()!!}

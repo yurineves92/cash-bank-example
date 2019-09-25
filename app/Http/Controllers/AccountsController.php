@@ -6,6 +6,7 @@ use App\Model\Accounts;
 use App\Model\AccountsHistorical;
 use Session;
 use Request;
+use DB;
 
 class AccountsController extends Controller
 {
@@ -75,12 +76,17 @@ class AccountsController extends Controller
     	return redirect()->action("AccountsController@index");
     }
 
-    public function movements()
+    public function movements(Request $request)
     {
-        $params = Request::all();
-        $accounts_historical = AccountsHistorical::paginate(25);
-        return view('historical.movements')->with('accounts_historical',$accounts_historical);
-      
+        $query = $request::all();
+        if($request && count($query) > 1){
+            $type_transaction = Request::get('type_transaction');
+            $date_operation = Request::get('date_operation');
+            $accounts_historical = AccountsHistorical::where('date_operation','=',$date_operation)->where('type_transaction','LIKE','%'.$type_transaction.'%')->orderBy('id','DESC')->paginate(2);
+        } else {
+            $accounts_historical = AccountsHistorical::orderBy('id','DESC')->paginate(2);
+        }
+        return view('historical.movements')->with('accounts_historical',$accounts_historical)->with('query',$query);
     }
 
 }
