@@ -7,6 +7,7 @@ use App\Model\AccountsHistorical;
 use Session;
 use Request;
 use DB;
+use PDF;
 
 class AccountsController extends Controller
 {
@@ -96,6 +97,21 @@ class AccountsController extends Controller
 
     public function historics_reports()
     {
-        dd("chegou");
+        $params = Request::all();
+        $conditions = [];
+        if(!empty($params['type_transaction'])){
+            $conditions['type_transaction'] = $params['type_transaction'];
+        }
+        if(!empty($params['date_operation'])){
+            $conditions['date_operation'] = $params['date_operation'];
+        }
+        if(count($params) > 1){
+            $accounts_historical = AccountsHistorical::where($conditions)->orderBy('id','DESC')->get();
+        } else {
+            $accounts_historical = AccountsHistorical::orderBy('id','DESC')->get();
+        }
+        $pdf = PDF::loadView('reports.historics',compact('accounts_historical'));
+        $pdf->getDomPDF()->set_option("enable_php", true);
+        return $pdf->stream();
     }
 }

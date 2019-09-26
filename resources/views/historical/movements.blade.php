@@ -28,7 +28,7 @@
                 @foreach ($accounts_historical as $a)
                 <tr class="{{$a->type_transaction == 1 ? 'alert alert-success' : 'alert alert-danger' }}">
                     <td>{{ $a->id}}</td>
-                    <td>{{ $a->account_id }}</td>
+                    <td>{{ $a->account->holder }}</td>
                     @if($a->type_transaction == 1)
                     <td>Depósito</td>
                     @else
