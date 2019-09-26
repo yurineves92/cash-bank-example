@@ -79,13 +79,15 @@ class AccountsController extends Controller
     public function movements(Request $request)
     {
         $query = $request::all();
+        $conditions = [];
         if($request && count($query) > 1){
-            $type_transaction = Request::get('type_transaction');
-            $date_operation = Request::get('date_operation');
-            if(!$date_operation){
-                $date_operation = date("Y-m-d");
+            if(!empty(Request::input("type_transaction"))){
+                $conditions["type_transaction"] = Request::input("type_transaction");
             }
-            $accounts_historical = AccountsHistorical::where('type_transaction',$type_transaction)->where('date_operation',$date_operation)->orderBy('id','DESC')->paginate(10);
+            if(!empty(Request::input("date_operation"))){
+                $conditions["date_operation"] = Request::input("date_operation");
+            }
+            $accounts_historical = AccountsHistorical::where($conditions)->orderBy('id','DESC')->paginate(10);
         } else {
             $accounts_historical = AccountsHistorical::orderBy('id','DESC')->paginate(10);
         }
