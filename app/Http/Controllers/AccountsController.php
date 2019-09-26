@@ -93,4 +93,9 @@ class AccountsController extends Controller
         }
         return view('historical.movements')->with('accounts_historical',$accounts_historical)->with('query',$query);
     }
+
+    public function historics_reports()
+    {
+        dd("chegou");
+    }
 }

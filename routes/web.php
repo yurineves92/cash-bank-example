@@ -19,5 +19,6 @@ Route::get('/', function () {
 Route::get('/accounts/movement/{id}','AccountsController@movement');
 Route::get('/accounts/movements','AccountsController@movements');
 Route::post('/accounts/accomplish','AccountsController@accomplish');
+Route::post('/reports/historics','AccountsController@historics_reports');
 
 Route::resource('/accounts', 'AccountsController');
