@@ -97,6 +97,8 @@ class AccountsController extends Controller
 
     public function historics_reports()
     {
+        //time for generate more results
+        set_time_limit(3000000);
         $params = Request::all();
         $conditions = [];
         if(!empty($params['type_transaction'])){
@@ -112,6 +114,6 @@ class AccountsController extends Controller
         }
         $pdf = PDF::loadView('reports.historics',compact('accounts_historical'));
         $pdf->getDomPDF()->set_option("enable_php", true);
-        return $pdf->stream();
+        return $pdf->download('relatorio_transacoes.pdf')->header('Content-Type','application/pdf');
     }
 }
