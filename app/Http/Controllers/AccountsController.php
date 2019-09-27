@@ -112,7 +112,7 @@ class AccountsController extends Controller
         } else {
             $accounts_historical = AccountsHistorical::orderBy('id','DESC')->get();
         }
-        $pdf = PDF::loadView('reports.historics',compact('accounts_historical'));
+        $pdf = PDF::loadView('reports.historics',compact('accounts_historical'))->setOrientation('landscape')->setOption('encoding', 'utf-8')->setOption('footer-center', 'Página [page] de [topage]');
         return $pdf->stream('reports.pdf');
     }
 }

@@ -19,10 +19,11 @@
     <body class="container">
         <div>
             <h2 class="text-center">Históricos de Transações</h2>
+            <p>Total de Registros: {{ count($accounts_historical) }}</p>
             <hr/>
         </div>
         <div class="table-responsive">
-            <table class="table-striped table-bordered table-hover table" style="font-size:12px;"> 
+            <table class="table-striped table-bordered table-hover table"> 
                 <thead>
                     <tr>
                         <th>ID</th>
