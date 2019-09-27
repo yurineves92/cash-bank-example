@@ -113,7 +113,6 @@ class AccountsController extends Controller
             $accounts_historical = AccountsHistorical::orderBy('id','DESC')->get();
         }
         $pdf = PDF::loadView('reports.historics',compact('accounts_historical'));
-        $pdf->getDomPDF()->set_option("enable_php", true);
-        return $pdf->download('relatorio_transacoes.pdf')->header('Content-Type','application/pdf');
+        return $pdf->stream('reports.pdf');
     }
 }
