@@ -1,4 +1,4 @@
-# Sistema de Banco Simples
+# Sistema de Controle de Contas (Depósito e Retirada)
 
 Controle suas transações do seus gastos e construa relatórios filtrados.
 
@@ -15,19 +15,21 @@ php artisan migrate
 
 Executar o comando para rodar a migrations para criação das tabelas no banco de dados.
 
-# Funcionalidades do sistema
-
-## O sistema consiste em utilizar seguintes telas
+## Funcionalidades do sistema
 
 * Formulário de cadastro e edição de contas.
 * Formulário para movimentação de deposito e retirada.
 * Listagem com filtros.
-* Relatórios em PDF com paginação(Em refatoração devido o volume de dados).
+* Relatórios em PDF com paginação.
 * Migrações para controle da estrutura do banco de dados.
 
 ## Desenvolvimento
 
 Um pequeno módulo feito para um projeto ERP.
+
+## Postagens para ajuda
+
+https://laravelcode.com/post/html-to-pdf-in-laravel-using-barryvdh-laravel-snappy
 
 ### Pré-requisitos
 
@@ -43,7 +45,7 @@ O que você precisa?
 * PHP 7+
 * MySQL
 * [Laravel](https://laravel.com/) - Laravel 6.0
-* [DomPDF](https://github.com/barryvdh/laravel-dompdf) - DomPDF para Laravel 5+
+* [Wkhtmltopdf](https://github.com/barryvdh/laravel-snappy) - Wkhtmltopdf para Laravel 5+
 * [Composer](https://getcomposer.org/) - Gerenciador de pacotes
 
 ### Desenvolvedor
