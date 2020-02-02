@@ -1,6 +1,6 @@
 # Sistema de Controle de Contas (Depósito e Retirada)
 
-Controle suas transações do seus gastos e construa relatórios filtrados.
+Controle suas transações do seus gastos e construa relatórios filtrados e simples.
 
 ## Começando
 
@@ -23,11 +23,19 @@ Executar o comando para rodar a migrations para criação das tabelas no banco d
 * Relatórios em PDF com paginação.
 * Migrações para controle da estrutura do banco de dados.
 
+## Como começar
+
+* Criar uma conta com seus dados.
+* Visualização do balanço.
+* Realize movimentação (Depósito e Retirada).
+* Possibilidade de filtrar por tipo de movimentação e data de operação.
+* Gerar PDF
+
 ## Desenvolvimento
 
 Um pequeno módulo feito para um projeto ERP.
 
-## Postagens para ajuda
+## Postagens para ajuda para gerar relatórios
 
 https://laravelcode.com/post/html-to-pdf-in-laravel-using-barryvdh-laravel-snappy
 
@@ -49,6 +57,6 @@ O que você precisa?
 * [Composer](https://getcomposer.org/) - Gerenciador de pacotes
 
 ### Desenvolvedor
-* Yuri Neves(https://github.com/yurineves92)
+* Yuri Neves(yurineves92@gmail.com)
 
 
